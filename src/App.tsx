@@ -12,10 +12,9 @@ function App() {
   return (
     <div className="App">
       <ul style={{textAlign: "left"}}>
-        <li>Name: {actor.name}</li>
-        <li>Score: {actor.score}</li>
-        <li>Hobbies: {actor.hobbies}</li>
-        <li>Description: {actor.description}</li>
+        {Object.entries(actor).map(([key,value]) => (
+          <li>{key}: {value}</li>
+        ))}
       </ul>
     </div>
   );
