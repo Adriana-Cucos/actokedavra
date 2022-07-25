@@ -1,5 +1,7 @@
 import './App.css';
 
+import { Actor } from './components/Actor/Actor';
+
 function App() {
 
   const actor = {
@@ -11,11 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul style={{textAlign: "left"}}>
-        {Object.entries(actor).map(([key,value]) => (
-          <li>{key}: {value}</li>
-        ))}
-      </ul>
+      <Actor {...actor} />
     </div>
   );
 }
