@@ -1,0 +1,14 @@
+.header {
+  padding: 17px;
+  text-align: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+
+  &Text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    color: #14142b;
+  }
+}
