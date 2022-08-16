@@ -1,6 +1,7 @@
 import './App.css'
 
 import { Footer } from 'components/Footer/Footer'
+import { Header } from 'components/Header/Header'
 import { Actor } from './components/Actor/Actor'
 
 import styles from './App.module.scss'
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className={styles.app}>
       <div className={styles.appContent}>
+        <Header />
         <Actor {...actor} />
       </div>
       <Footer />
