@@ -1,0 +1,31 @@
+.footer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #d9dbe9;
+  background-color: #ffffff;
+  position: absolute;
+  height: 56px;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+
+  &Date {
+    color: #14142b;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 120%;
+  }
+
+  &Logo {
+    color: #14142b;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 120%;
+  }
+}
