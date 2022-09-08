@@ -15,7 +15,7 @@ const months = [
 
 const capitalizeFirstLetter = (string: string) => string.charAt(0).toUpperCase() + string.slice(1)
 
-const getDayMonthYear = (date: Date) => `${date.getDay()} ${months[date.getMonth()]} ${date.getFullYear()}`
+const getDayMonthYear = (date: Date) => `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
 
 export const UtilService = {
   capitalizeFirstLetter,
