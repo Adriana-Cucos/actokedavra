@@ -4,6 +4,7 @@ import { Footer } from 'components/Footer/Footer'
 import { Header } from 'components/Header/Header'
 import { Actor } from './components/Actor/Actor'
 import { Button } from './components/Button/Button'
+import { ReadMore } from 'components/ReadMore/ReadMore'
 
 import { BUTTON_TYPES, ICON_POSITIONS, BUTTON_BORDERS } from 'shared/constants'
 
@@ -67,6 +68,9 @@ function App() {
           border={BUTTON_BORDERS.BoldBoldered}
           className={styles.appComponent}
         />
+        <ReadMore className={styles.appComponent} limit={59}>
+          It's easy to believe Leonardo DiCaprio really is the "king" of the movie industry. He is also good looking.
+        </ReadMore>
       </div>
       <Footer />
     </div>
