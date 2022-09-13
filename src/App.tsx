@@ -5,7 +5,6 @@ import { Header } from 'components/Header/Header'
 import { Actor } from './components/Actor/Actor'
 import { Button } from './components/Button/Button'
 import { ReadMore } from 'components/ReadMore/ReadMore'
-import { Hobby } from 'components/Hobby/Hobby'
 
 import { BUTTON_TYPES, ICON_POSITIONS, BUTTON_BORDERS } from 'shared/constants'
 
@@ -14,6 +13,7 @@ import styles from './App.module.scss'
 import iconArrow from './assets/arrow-chevron-down.png'
 import iconPen from './assets/pen-icon.png'
 import iconDelete from './assets/delete-icon.png'
+import { Hobbies } from 'components/Hobbies/Hobbies'
 
 function App() {
   const actor = {
@@ -72,7 +72,7 @@ function App() {
         <ReadMore className={styles.appComponent} limit={59}>
           It's easy to believe Leonardo DiCaprio really is the "king" of the movie industry. He is also good looking.
         </ReadMore>
-        <Hobby text='Traveling' className={styles.appComponent} />
+        <Hobbies texts={['Traveling', 'Reading', 'Dancing', 'Blogging']} className={styles.appComponent} />
       </div>
       <Footer />
     </div>
