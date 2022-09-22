@@ -23,6 +23,10 @@ function App() {
     description: 'He is a good guy with a thick mustache.',
   }
 
+  const handleButtonClick = () => {
+    console.log('Clicked')
+  }
+
   return (
     <div className={styles.app}>
       <div className={styles.appContent}>
@@ -35,8 +39,17 @@ function App() {
           icon=''
           border={BUTTON_BORDERS.Bordered}
           className={styles.appComponent}
+          onClickEvent={handleButtonClick}
         />
-        <Button text='' type={BUTTON_TYPES.Round} iconPosition='' icon='' border='' className={styles.appComponent} />
+        <Button
+          text=''
+          type={BUTTON_TYPES.Round}
+          iconPosition=''
+          icon=''
+          border=''
+          className={styles.appComponent}
+          onClickEvent={handleButtonClick}
+        />
         <Button
           text='Read more'
           type={BUTTON_TYPES.Expandable}
@@ -44,6 +57,7 @@ function App() {
           icon={iconArrow}
           border=''
           className={styles.appComponent}
+          onClickEvent={handleButtonClick}
         />
         <Button
           text='Edit'
@@ -52,6 +66,7 @@ function App() {
           icon={iconPen}
           border={BUTTON_BORDERS.Bordered}
           className={styles.appComponent}
+          onClickEvent={handleButtonClick}
         />
         <Button
           text='Add new actor'
@@ -60,6 +75,7 @@ function App() {
           icon=''
           border=''
           className={styles.appComponent}
+          onClickEvent={handleButtonClick}
         />
         <Button
           text='Delete'
@@ -68,10 +84,15 @@ function App() {
           icon={iconDelete}
           border={BUTTON_BORDERS.BoldBoldered}
           className={styles.appComponent}
+          onClickEvent={handleButtonClick}
         />
-        <ReadMore className={styles.appComponent} limit={59}>
-          It's easy to believe Leonardo DiCaprio really is the "king" of the movie industry. He is also good looking.
-        </ReadMore>
+        <ReadMore
+          className={styles.appComponent}
+          limit={59}
+          text='It&apos;s easy to believe Leonardo DiCaprio really is the "king" of the movie industry. He is also good looking.'
+          labelStart='Read more'
+          labelEnd='Read less'
+        />
         <Hobbies texts={['Traveling', 'Reading', 'Dancing', 'Blogging']} className={styles.appComponent} />
       </div>
       <Footer />
