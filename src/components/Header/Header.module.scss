@@ -1,3 +1,5 @@
+@import '../../shared/variables.scss';
+
 .header {
   padding: 17px;
   text-align: center;
@@ -9,6 +11,6 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 1.2;
-    color: #14142b;
+    color: $darkBlue;
   }
 }
