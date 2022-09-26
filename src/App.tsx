@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import './App.css'
 
 import { Footer } from 'components/Footer/Footer'
@@ -5,6 +7,7 @@ import { Header } from 'components/Header/Header'
 import { Actor } from './components/Actor/Actor'
 import { Button } from './components/Button/Button'
 import { ReadMore } from 'components/ReadMore/ReadMore'
+import { Modal } from 'components/Modal/Modal'
 
 import { BUTTON_TYPES, ICON_POSITIONS, BUTTON_BORDERS } from 'shared/constants'
 
@@ -23,12 +26,23 @@ function App() {
     description: 'He is a good guy with a thick mustache.',
   }
 
+  const [showModal, setShowModal] = useState(false)
+
+  // General button click event
   const handleButtonClick = () => {
     console.log('Clicked')
   }
 
+  const handleSortClick = () => {
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   return (
-    <div className={styles.app}>
+    <div className={`${styles.app} app`}>
       <div className={styles.appContent}>
         <Header />
         <Actor {...actor} className={styles.appComponent} />
@@ -39,7 +53,7 @@ function App() {
           icon=''
           border={BUTTON_BORDERS.Bordered}
           className={styles.appComponent}
-          onClickEvent={handleButtonClick}
+          onClickEvent={handleSortClick}
         />
         <Button
           text=''
@@ -94,6 +108,11 @@ function App() {
           labelEnd='Read less'
         />
         <Hobbies texts={['Traveling', 'Reading', 'Dancing', 'Blogging']} className={styles.appComponent} />
+        {showModal && (
+          <Modal title='Title' closeModal={closeModal} hasCloseBtn={true}>
+            Test
+          </Modal>
+        )}
       </div>
       <Footer />
     </div>

@@ -1,3 +1,5 @@
+@import '../../shared/variables.scss';
+
 .footer {
   padding: 20px;
   display: flex;
@@ -12,7 +14,7 @@
   width: 100%;
 
   &Date {
-    color: #14142b;
+    color: $darkBlue;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -21,7 +23,7 @@
   }
 
   &Logo {
-    color: #14142b;
+    color: $darkBlue;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
