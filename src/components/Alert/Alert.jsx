@@ -20,6 +20,16 @@ export const Alert = ({ type, text, closeAlert, autoclose }) => {
 
   useEffect(() => {
     setCssTop('53px')
+    if (autoclose) {
+      const time = setTimeout(() => {
+        handleCloseAlert()
+      }, 3000)
+
+      return () => {
+        clearTimeout(time)
+      }
+    }
+    // eslint-disable-next-line
   }, [])
 
   return (
