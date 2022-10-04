@@ -4,6 +4,10 @@
   padding: 17px;
   text-align: center;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
 
   &Text {
     font-family: 'Poppins';
