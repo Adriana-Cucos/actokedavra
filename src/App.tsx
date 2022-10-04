@@ -7,16 +7,17 @@ import { Header } from 'components/Header/Header'
 import { Actor } from './components/Actor/Actor'
 import { Button } from './components/Button/Button'
 import { ReadMore } from 'components/ReadMore/ReadMore'
+import { Hobbies } from 'components/Hobbies/Hobbies'
 import { Modal } from 'components/Modal/Modal'
+import { Alert } from 'components/Alert/Alert'
 
-import { BUTTON_TYPES, ICON_POSITIONS, BUTTON_BORDERS } from 'shared/constants'
+import { BUTTON_TYPES, ICON_POSITIONS, BUTTON_BORDERS, ALERT_TYPES } from 'shared/constants'
 
 import styles from './App.module.scss'
 
 import iconArrow from './assets/arrow-chevron-down.png'
 import iconPen from './assets/pen-icon.png'
 import iconDelete from './assets/delete-icon.png'
-import { Hobbies } from 'components/Hobbies/Hobbies'
 
 function App() {
   const actor = {
@@ -27,6 +28,7 @@ function App() {
   }
 
   const [showModal, setShowModal] = useState(false)
+  const [showAlert, setShowAlert] = useState(false)
 
   // General button click event
   const handleButtonClick = () => {
@@ -41,19 +43,39 @@ function App() {
     setShowModal(false)
   }
 
+  const handleAlertClick = () => {
+    setShowAlert(true)
+  }
+
+  const closeAlert = () => {
+    setShowAlert(false)
+  }
+
   return (
     <div className={`${styles.app} app`}>
-      <div className={styles.appContent}>
-        <Header />
+      <Header />
+      <div className={`${styles.appContent} appComponent`}>
+        {showAlert && (
+          <Alert type={ALERT_TYPES.Success} text='Actor added successfully' closeAlert={closeAlert} autoclose={true} />
+        )}
         <Actor {...actor} className={styles.appComponent} />
         <Button
-          text='Sort'
+          text='Modal'
           type={BUTTON_TYPES.Full}
           iconPosition=''
           icon=''
           border={BUTTON_BORDERS.Bordered}
           className={styles.appComponent}
           onClickEvent={handleSortClick}
+        />
+        <Button
+          text='Alert'
+          type={BUTTON_TYPES.Full}
+          iconPosition=''
+          icon=''
+          border={BUTTON_BORDERS.Bordered}
+          className={styles.appComponent}
+          onClickEvent={handleAlertClick}
         />
         <Button
           text=''

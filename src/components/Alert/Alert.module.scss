@@ -1,0 +1,88 @@
+@import '../../shared/variables.scss';
+
+.alert {
+  padding: 25px 21px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 8px;
+  transition: 0.7s ease-in-out;
+
+  &Success {
+    background-color: $lightGreen;
+
+    .alertIcon {
+      background-image: url('../../assets/success-icon.svg');
+      width: 24px;
+      height: 24px;
+    }
+
+    .alertText {
+      color: $green;
+    }
+
+    .alertCloseIcon {
+      background-image: url('../../assets/success-close-icon.svg');
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+
+  &Warning {
+    background-color: $lightYellow;
+
+    .alertIcon {
+      background-image: url('../../assets/warning-icon.svg');
+      width: 24px;
+      height: 24px;
+    }
+
+    .alertText {
+      color: $brown;
+    }
+
+    .alertCloseIcon {
+      background-image: url('../../assets/warning-close-icon.svg');
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+
+  &Error {
+    background-color: $lightPink;
+
+    .alertIcon {
+      background-image: url('../../assets/error-icon.svg');
+      width: 24px;
+      height: 24px;
+    }
+
+    .alertText {
+      color: $darkPink;
+    }
+
+    .alertCloseIcon {
+      background-image: url('../../assets/error-close-icon.svg');
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+
+  &Icon {
+    margin-right: 16px;
+  }
+
+  &Text {
+    flex: 1 1 auto;
+    margin-right: 16px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
