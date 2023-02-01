@@ -19,6 +19,7 @@ import styles from './App.module.scss'
 import iconArrow from './assets/arrow-chevron-down.png'
 import iconPen from './assets/pen-icon.png'
 import iconDelete from './assets/delete-icon.png'
+import { ActorSort } from 'components/ActorSort/ActorSort'
 
 function App() {
   const actor = {
@@ -31,6 +32,7 @@ function App() {
   const [showModal, setShowModal] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [showNoActors, setShowNoActors] = useState(false)
+  const [showActorSort, setShowActorSort] = useState(false)
 
   // General button click event
   const handleButtonClick = () => {
@@ -59,6 +61,14 @@ function App() {
 
   const closeNoActors = () => {
     setShowNoActors(false)
+  }
+
+  const handleActorSortClick = () => {
+    setShowActorSort(true)
+  }
+
+  const closeActorSort = () => {
+    setShowActorSort(false)
   }
 
   return (
@@ -101,6 +111,15 @@ function App() {
             border={BUTTON_BORDERS.Bordered}
             className={styles.appComponent}
             onClickEvent={handleNoActorsClick}
+          />
+          <Button
+            text='Sort'
+            type={BUTTON_TYPES.Full}
+            iconPosition=''
+            icon=''
+            border={BUTTON_BORDERS.Bordered}
+            className={styles.appComponent}
+            onClickEvent={handleActorSortClick}
           />
           <Button
             text=''
@@ -158,6 +177,11 @@ function App() {
           {showModal && (
             <Modal title='Title' closeModal={closeModal} hasCloseBtn={true}>
               Test
+            </Modal>
+          )}
+          {showActorSort && (
+            <Modal title='Select type of sort' closeModal={closeActorSort} hasCloseBtn={true}>
+              <ActorSort closeModal={closeActorSort} />
             </Modal>
           )}
         </div>
