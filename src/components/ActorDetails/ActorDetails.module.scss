@@ -1,0 +1,71 @@
+.actorThumbnailContainer {
+  border-radius: 10px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  width: 98%;
+
+  &Image {
+    height: 173px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px 10px 0px 0px;
+  }
+}
+
+.actorDetails {
+  padding: 10px;
+
+  &Name {
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.2;
+    color: #14142b;
+    margin-bottom: 4px;
+  }
+
+  &Hobbies {
+    margin-bottom: 8px;
+  }
+
+  &ReadMore {
+    margin-bottom: 15px;
+  }
+
+  &EditBtn {
+    width: 100%;
+  }
+
+  &DeleteBtn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+  }
+}
+
+.actorInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+
+  &Ocupation {
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #4e4b66;
+  }
+}
+
+.actorInfoScore {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  &Number {
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #f4b740;
+  }
+}
