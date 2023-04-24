@@ -4,15 +4,16 @@ import './App.css'
 
 import { Footer } from 'components/Footer/Footer'
 import { Header } from 'components/Header/Header'
-import { Actor } from './components/Actor/Actor'
 import { Button } from './components/Button/Button'
 import { ReadMore } from 'components/ReadMore/ReadMore'
 import { Hobbies } from 'components/Hobbies/Hobbies'
 import { Modal } from 'components/Modal/Modal'
 import { Alert } from 'components/Alert/Alert'
 import { NoActors } from 'components/NoActors/NoActors'
+import { ActorDetails } from 'components/ActorDetails/ActorDetails'
 
 import { BUTTON_TYPES, ICON_POSITIONS, BUTTON_BORDERS, ALERT_TYPES } from 'shared/constants'
+import { ACTOR } from 'data'
 
 import styles from './App.module.scss'
 
@@ -22,13 +23,6 @@ import iconDelete from './assets/delete-icon.png'
 import { ActorSort } from 'components/ActorSort/ActorSort'
 
 function App() {
-  const actor = {
-    name: 'Leonardo Dicaprio',
-    score: 10,
-    hobbies: 'Music and dancing naked in the rain',
-    description: 'He is a good guy with a thick mustache.',
-  }
-
   const [showModal, setShowModal] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [showNoActors, setShowNoActors] = useState(false)
@@ -84,7 +78,6 @@ function App() {
               autoclose={true}
             />
           )}
-          <Actor {...actor} className={styles.appComponent} />
           <Button
             text='Modal'
             type={BUTTON_TYPES.Full}
@@ -184,6 +177,8 @@ function App() {
               <ActorSort closeModal={closeActorSort} />
             </Modal>
           )}
+
+          <ActorDetails {...ACTOR} />
         </div>
       )}
       {showNoActors && <NoActors closeNoActors={closeNoActors} />}
