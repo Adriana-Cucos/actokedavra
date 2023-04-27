@@ -1,0 +1,62 @@
+.formGroup {
+  margin-bottom: 24px;
+
+  &Label {
+    color: #6e7191;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  &Input {
+    background: #eff0f7;
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    padding: 16px;
+
+    &:focus {
+      outline: 3px groove #6308f7;
+      outline-offset: 1px;
+    }
+  }
+
+  &Message {
+    color: #98014c;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  &SubmitBtn {
+    width: 100%;
+  }
+}
+
+.formGroupContainer {
+  background: #eff0f7;
+  border-radius: 10px;
+  width: 100%;
+  padding: 16px;
+
+  &Textarea {
+    height: 100px;
+    width: 100%;
+  }
+
+  &Message {
+    color: #4e4b66;
+    font-weight: 300;
+    font-size: 10px;
+  }
+
+  &:focus-within {
+    outline: 3px groove #6308f7;
+    outline-offset: 1px;
+  }
+}
+
+.formInvalidField {
+  background: #ffe5f2;
+  border: 2px solid #ed2e7e;
+}
