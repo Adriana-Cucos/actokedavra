@@ -21,6 +21,7 @@ import iconArrow from './assets/arrow-chevron-down.png'
 import iconPen from './assets/pen-icon.png'
 import iconDelete from './assets/delete-icon.png'
 import { ActorSort } from 'components/ActorSort/ActorSort'
+import { ActorAdd } from 'components/ActorAdd/ActorAdd'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -179,6 +180,8 @@ function App() {
           )}
 
           <ActorDetails {...ACTOR} />
+
+          <ActorAdd />
         </div>
       )}
       {showNoActors && <NoActors closeNoActors={closeNoActors} />}
