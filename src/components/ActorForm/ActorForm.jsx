@@ -10,7 +10,7 @@ import styles from './ActorForm.module.scss'
 export const ActorForm = () => {
   const descriptionCharsNum = 180
   const [name, setName] = useState('')
-  const [ocupation, setOcupation] = useState('')
+  const [occupation, setOccupation] = useState('')
   const [hobbies, setHobbies] = useState('')
   const [description, setDescription] = useState('')
   const [countDescription, setCountDescription] = useState(descriptionCharsNum)
@@ -41,12 +41,12 @@ export const ActorForm = () => {
       <div className={styles.formGroup}>
         <label className={styles.formGroupLabel}>Principal job</label>
         <input
-          className={cx(styles.formGroupInput, `${formSubmitted && !ocupation ? styles.formInvalidField : ''}`)}
+          className={cx(styles.formGroupInput, `${formSubmitted && !occupation ? styles.formInvalidField : ''}`)}
           type='text'
-          value={ocupation}
-          onChange={(e) => setOcupation(e.target.value)}
+          value={occupation}
+          onChange={(e) => setOccupation(e.target.value)}
         />
-        {formSubmitted && !ocupation && <span className={styles.formGroupMessage}>Field required</span>}
+        {formSubmitted && !occupation && <span className={styles.formGroupMessage}>Field required</span>}
       </div>
       <div className={styles.formGroup}>
         <label className={styles.formGroupLabel}>Hobbies</label>

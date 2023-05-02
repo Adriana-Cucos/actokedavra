@@ -9,7 +9,7 @@ import styles from './ActorDetails.module.scss'
 import iconPen from '../../assets/pen-icon.png'
 import iconThumbsUp from '../../assets/thumbs-up.png'
 
-export const ActorDetails = ({ image, name, ocupation, score, hobbies, description }) => {
+export const ActorDetails = ({ image, name, occupation, likes, hobbies, description }) => {
   const handleEditButtonClick = () => {
     alert('Edit Actor')
   }
@@ -24,9 +24,9 @@ export const ActorDetails = ({ image, name, ocupation, score, hobbies, descripti
       <div className={styles.actorDetails}>
         <h3 className={styles.actorDetailsName}>{name}</h3>
         <div className={styles.actorInfo}>
-          <p className={styles.actorInfoOcupation}>{ocupation}</p>
-          <div className={styles.actorInfoScore}>
-            <div className={styles.actorInfoScoreNumber}>{score}</div>
+          <p className={styles.actorInfoOccupation}>{occupation}</p>
+          <div className={styles.actorInfoLikes}>
+            <div className={styles.actorInfoLikesNumber}>{likes}</div>
             <img src={iconThumbsUp} alt='Thumbs up' />
           </div>
         </div>

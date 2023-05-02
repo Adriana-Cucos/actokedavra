@@ -1,14 +1,22 @@
-.app {
+.homepage {
   position: relative;
   min-height: 100vh;
 
   &Content {
-    padding-bottom: 56px;
-    padding-top: 53px;
+    padding: 56px 16px;
   }
+}
 
-  &Component {
-    margin-bottom: 20px;
-    margin-left: 10px;
+.actorActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+  margin-bottom: 34px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &Btn {
+    width: 47%;
   }
 }
