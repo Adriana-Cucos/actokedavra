@@ -1,0 +1,12 @@
+.actorsList {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 0 auto;
+
+  &Item {
+    width: 48%;
+    margin-bottom: 20px;
+  }
+}
