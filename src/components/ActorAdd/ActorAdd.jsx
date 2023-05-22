@@ -8,7 +8,7 @@ import { BUTTON_TYPES } from 'shared/constants'
 
 import styles from './ActorAdd.module.scss'
 
-export const ActorAdd = () => {
+export const ActorAdd = ({ handleAddActorBtnClick }) => {
   const [showForm, setShowForm] = useState(false)
 
   const handleAddActorButtonClick = () => {
@@ -33,7 +33,7 @@ export const ActorAdd = () => {
 
       {showForm && (
         <Modal title='Add new actor' closeModal={closeActorAdd} hasCloseBtn={true}>
-          <ActorForm />
+          <ActorForm handleAddActorBtnClick={handleAddActorBtnClick} handleCloseModal={closeActorAdd} />
           <div className={styles.actorCancelContainer}>
             <div className={styles.actorCancelContainerBtn} onClick={closeActorAdd}>
               I changed my mind

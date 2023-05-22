@@ -3,74 +3,152 @@ import cx from 'classnames'
 
 import { Button } from 'components/Button/Button'
 
-import { BUTTON_TYPES } from 'shared/constants'
+import { BUTTON_TYPES, NO_PROFILE_IMAGE } from 'shared/constants'
 
 import styles from './ActorForm.module.scss'
 
-export const ActorForm = () => {
+export const ActorForm = ({ handleAddActorBtnClick, handleCloseModal }) => {
   const descriptionCharsNum = 180
-  const [name, setName] = useState('')
-  const [occupation, setOccupation] = useState('')
-  const [hobbies, setHobbies] = useState('')
-  const [description, setDescription] = useState('')
+  const initialValues = {
+    name: '',
+    image: '',
+    occupation: '',
+    likes: '',
+    hobbies: '',
+    description: '',
+  }
+  const [formValues, setFormValues] = useState(initialValues)
+  const [formErrors, setFormErrors] = useState({})
   const [countDescription, setCountDescription] = useState(descriptionCharsNum)
-  const [formSubmitted, setFormSubmitted] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormValues({ ...formValues, [name]: value })
+  }
 
   const handleActorDescriptionOnChange = (e) => {
-    setDescription(e.target.value)
+    handleChange(e)
     setCountDescription(descriptionCharsNum - e.target.value.length)
+  }
+
+  const validate = (values) => {
+    const errors = {}
+    let formIsValid = true
+
+    if (!values.name) {
+      errors.name = 'Field required'
+      formIsValid = false
+    }
+
+    if (!values.occupation) {
+      errors.occupation = 'Field required'
+      formIsValid = false
+    }
+
+    if (!values.hobbies) {
+      errors.hobbies = 'Field required'
+      formIsValid = false
+    }
+
+    if (!values.description) {
+      errors.description = 'Field required'
+      formIsValid = false
+    }
+
+    if (isNaN(values.likes)) {
+      errors.likes = 'Field should contain a number'
+      formIsValid = false
+    }
+
+    setFormErrors(errors)
+    return formIsValid
   }
 
   const handleActorFormSubmit = (event) => {
     event.preventDefault()
-    setFormSubmitted(true)
+    event.stopPropagation()
+    let isNewActorAdded = false
+
+    if (validate(formValues)) {
+      const hobbiesArr = formValues.hobbies.split(',')
+      const imageUrl = !formValues.image ? NO_PROFILE_IMAGE.Link : formValues.image
+      const likesNum = !formValues.likes ? 0 : formValues.likes
+      isNewActorAdded = true
+      handleAddActorBtnClick({ ...formValues, hobbies: hobbiesArr, image: imageUrl, likes: likesNum }, isNewActorAdded)
+      handleCloseModal()
+    }
   }
 
   return (
     <form onSubmit={handleActorFormSubmit}>
       <div className={styles.formGroup}>
-        <label className={styles.formGroupLabel}>Name</label>
+        <label className={styles.formGroupLabel}>Name*</label>
         <input
-          className={cx(styles.formGroupInput, `${formSubmitted && !name ? styles.formInvalidField : ''}`)}
+          className={cx(styles.formGroupInput, `${formErrors.name ? styles.formInvalidField : ''}`)}
           type='text'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name='name'
+          value={formValues.name}
+          onChange={handleChange}
         />
-        {formSubmitted && !name && <span className={styles.formGroupMessage}>Field required</span>}
+        <span className={styles.formGroupMessage}>{formErrors.name}</span>
       </div>
       <div className={styles.formGroup}>
-        <label className={styles.formGroupLabel}>Principal job</label>
+        <label className={styles.formGroupLabel}>Profile Image</label>
         <input
-          className={cx(styles.formGroupInput, `${formSubmitted && !occupation ? styles.formInvalidField : ''}`)}
+          className={styles.formGroupInput}
           type='text'
-          value={occupation}
-          onChange={(e) => setOccupation(e.target.value)}
+          name='image'
+          value={formValues.image}
+          onChange={handleChange}
         />
-        {formSubmitted && !occupation && <span className={styles.formGroupMessage}>Field required</span>}
+        <span className={styles.formGroupMessage}>{formErrors.name}</span>
       </div>
       <div className={styles.formGroup}>
-        <label className={styles.formGroupLabel}>Hobbies</label>
+        <label className={styles.formGroupLabel}>Principal job*</label>
         <input
-          className={cx(styles.formGroupInput, `${formSubmitted && !hobbies ? styles.formInvalidField : ''}`)}
+          className={cx(styles.formGroupInput, `${formErrors.occupation ? styles.formInvalidField : ''}`)}
           type='text'
-          value={hobbies}
-          onChange={(e) => setHobbies(e.target.value)}
+          name='occupation'
+          value={formValues.occupation}
+          onChange={handleChange}
         />
-        {formSubmitted && !hobbies && <span className={styles.formGroupMessage}>Field required</span>}
+        <span className={styles.formGroupMessage}>{formErrors.occupation}</span>
       </div>
       <div className={styles.formGroup}>
-        <label className={styles.formGroupLabel}>Short description</label>
-        <div
-          className={cx(styles.formGroupContainer, `${formSubmitted && !description ? styles.formInvalidField : ''}`)}>
+        <label className={styles.formGroupLabel}>Likes</label>
+        <input
+          className={cx(styles.formGroupInput, `${formErrors.likes ? styles.formInvalidField : ''}`)}
+          type='text'
+          name='likes'
+          value={formValues.likes}
+          onChange={handleChange}
+        />
+        <span className={styles.formGroupMessage}>{formErrors.likes}</span>
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formGroupLabel}>Hobbies*</label>
+        <input
+          className={cx(styles.formGroupInput, `${formErrors.hobbies ? styles.formInvalidField : ''}`)}
+          type='text'
+          name='hobbies'
+          value={formValues.hobbies}
+          onChange={handleChange}
+        />
+        <span className={styles.formGroupMessage}>{formErrors.hobbies}</span>
+      </div>
+      <div className={styles.formGroup}>
+        <label className={styles.formGroupLabel}>Short description*</label>
+        <div className={cx(styles.formGroupContainer, `${formErrors.description ? styles.formInvalidField : ''}`)}>
           <textarea
             className={styles.formGroupContainerTextarea}
-            description={description}
+            name='description'
+            description={formValues.description}
             maxLength={descriptionCharsNum}
             onChange={handleActorDescriptionOnChange}
           />
           <div className={styles.formGroupContainerMessage}>{countDescription} characters remained</div>
         </div>
-        {formSubmitted && !description && <span className={styles.formGroupMessage}>Field required</span>}
+        <span className={styles.formGroupMessage}>{formErrors.description}</span>
       </div>
       <div className={styles.formGroup}>
         <Button
