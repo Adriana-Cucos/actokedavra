@@ -10,13 +10,15 @@ import { Actors } from 'components/Actors/Actors'
 import { ActorAdd } from 'components/ActorAdd/ActorAdd'
 import { Alert } from 'components/Alert/Alert'
 
-import { BUTTON_TYPES, BUTTON_BORDERS, ALERT_TYPES } from 'shared/constants'
+import { BUTTON_TYPES, BUTTON_BORDERS, ALERT_TYPES, NUM_OF_ACTORS } from 'shared/constants'
 
 import styles from './Home.module.scss'
 
 export const Home = () => {
   const [actors, setActors] = useState([])
   const [showAddActorAlert, setShowAddActorAlert] = useState(false)
+  const [showAddActorWarning, setShowAddActorWarning] = useState(false)
+  const [isDisableAddActorBtn, setIsDisableAddActorBtn] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -24,6 +26,10 @@ export const Home = () => {
       setActors(actors)
     })()
   }, [])
+
+  useEffect(() => {
+    actors.length >= NUM_OF_ACTORS ? setIsDisableAddActorBtn(true) : setIsDisableAddActorBtn(false)
+  }, [actors])
 
   const handleAddActorBtnClick = (actor, isSuccess) => {
     setActors([...actors, actor])
@@ -34,6 +40,14 @@ export const Home = () => {
     setShowAddActorAlert(false)
   }
 
+  const showAddActorWarningAlert = (isVisible) => {
+    setShowAddActorWarning(isVisible)
+  }
+
+  const closeAddActorWarning = () => {
+    setShowAddActorWarning(false)
+  }
+
   return (
     <div className={`${styles.homepage} app`}>
       <Header />
@@ -42,6 +56,14 @@ export const Home = () => {
           type={ALERT_TYPES.Success}
           text='Actor added successfully'
           closeAlert={closeAddActorAlert}
+          autoclose={true}
+        />
+      )}
+      {showAddActorWarning && (
+        <Alert
+          type={ALERT_TYPES.Warning}
+          text={`You can add max ${NUM_OF_ACTORS} actors`}
+          closeAlert={closeAddActorWarning}
           autoclose={true}
         />
       )}
@@ -67,7 +89,11 @@ export const Home = () => {
           />
         </div>
         <Actors actors={actors} />
-        <ActorAdd handleAddActorBtnClick={handleAddActorBtnClick} />
+        <ActorAdd
+          handleAddActorBtnClick={handleAddActorBtnClick}
+          disableAddActorBtn={isDisableAddActorBtn}
+          showAddActorWarningAlert={showAddActorWarningAlert}
+        />
       </div>
       <Footer />
     </div>

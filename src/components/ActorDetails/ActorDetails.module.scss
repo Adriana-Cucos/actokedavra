@@ -1,3 +1,5 @@
+@import '../../shared/variables.scss';
+
 .actorThumbnailContainer {
   border-radius: 10px;
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1));
@@ -20,7 +22,7 @@
     font-weight: 600;
     font-size: 13px;
     line-height: 1.2;
-    color: #14142b;
+    color: $darkBlue;
     margin-bottom: 4px;
   }
 
@@ -52,7 +54,7 @@
     font-weight: 300;
     font-size: 11px;
     line-height: 1.2;
-    color: #4e4b66;
+    color: $blueGray2;
   }
 }
 
@@ -65,6 +67,6 @@
     font-weight: 600;
     font-size: 11px;
     line-height: 1.2;
-    color: #f4b740;
+    color: $orange;
   }
 }

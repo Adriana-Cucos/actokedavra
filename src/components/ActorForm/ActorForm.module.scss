@@ -1,8 +1,10 @@
+@import '../../shared/variables.scss';
+
 .formGroup {
   margin-bottom: 24px;
 
   &Label {
-    color: #6e7191;
+    color: $blueGray;
     font-weight: 400;
     font-size: 15px;
     line-height: 1.2;
@@ -10,20 +12,20 @@
   }
 
   &Input {
-    background: #eff0f7;
+    background: $lightBlue;
     border-radius: 10px;
     height: 50px;
     width: 100%;
     padding: 16px;
 
     &:focus {
-      outline: 3px groove #6308f7;
+      outline: 3px groove $blue;
       outline-offset: 1px;
     }
   }
 
   &Message {
-    color: #98014c;
+    color: $red;
     font-weight: 600;
     font-size: 13px;
   }
@@ -34,7 +36,7 @@
 }
 
 .formGroupContainer {
-  background: #eff0f7;
+  background: $lightBlue;
   border-radius: 10px;
   width: 100%;
   padding: 16px;
@@ -45,18 +47,18 @@
   }
 
   &Message {
-    color: #4e4b66;
+    color: $blueGray2;
     font-weight: 300;
     font-size: 10px;
   }
 
   &:focus-within {
-    outline: 3px groove #6308f7;
+    outline: 3px groove $blue;
     outline-offset: 1px;
   }
 }
 
 .formInvalidField {
-  background: #ffe5f2;
-  border: 2px solid #ed2e7e;
+  background: $lightPink;
+  border: 2px solid $darkPink;
 }

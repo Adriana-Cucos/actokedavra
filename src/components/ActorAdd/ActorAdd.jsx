@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import cx from 'classnames'
 
 import { Button } from 'components/Button/Button'
 import { Modal } from 'components/Modal/Modal'
@@ -8,11 +9,15 @@ import { BUTTON_TYPES } from 'shared/constants'
 
 import styles from './ActorAdd.module.scss'
 
-export const ActorAdd = ({ handleAddActorBtnClick }) => {
+export const ActorAdd = ({ handleAddActorBtnClick, disableAddActorBtn, showAddActorWarningAlert }) => {
   const [showForm, setShowForm] = useState(false)
 
   const handleAddActorButtonClick = () => {
-    setShowForm(true)
+    if (disableAddActorBtn) {
+      showAddActorWarningAlert(disableAddActorBtn)
+    } else {
+      setShowForm(true)
+    }
   }
 
   const closeActorAdd = () => {
@@ -27,7 +32,7 @@ export const ActorAdd = ({ handleAddActorBtnClick }) => {
         iconPosition=''
         icon=''
         border=''
-        className={styles.actorAddBtn}
+        className={cx(styles.actorAddBtn, `${disableAddActorBtn ? styles.actorAddBtnDisabled : ''}`)}
         onClickEvent={handleAddActorButtonClick}
       />
 
